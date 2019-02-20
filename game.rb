@@ -1,29 +1,44 @@
 
 class Game
-  #init(p1, p2, is_p1?)
-
+  # game has players
+  # game has state/loop (which turn it is)
   def initialize()
-    @player1 = 'p1'
-    @player2 = 'p2'
+    @player1 = 'p1' #Player.new()
+    @player2 = 'p1' #Player.new()
     @is_p1 = true
   end
 
+  # game has turns
   def start
-    puts 'new turn'
+    puts ''
+    puts "Welcome to the TwO-O-Player Math Game."
+    puts ''
+    puts "You each start with 3 lives, when you answer incorrectly you lose a life. If your life total reaches 0, you lose, and the last person standing wins."
+    puts ''
+    puts "Ready... Go!"
+    this_turn = Turn.new
   end
 
-  # game has players
-  # game has state/loop (which turn it is)
-  # game has turns
+  # def whos_turn_is_it_anyways
+  # end
+
   # game has win condition (last person standing, person with zero lives loses)
 end
 
-class Player
-  # player has a name
-  # player has lives
+
+class Player()
+  def initialize()
+    @lives = 3
+  end
+
 end
 
 class Turn
+  def initialize()
+    @q = Question.new
+    @current_player = 'p1' #check whos
+  end
+
   # current_player = p1 or p2 (depending on game loop?)
   # generates new instance of question and puts it to player
   # prompts player for response
@@ -33,8 +48,16 @@ class Turn
 end
 
 class Question
-  # ran1: number between 1-20
-  # ran2: number between 1-20
-  # (generates) question: ("What is #{ran1} + #{ran2}?")
-  # (calculates) answer: ran1+ran2
+  attr_reader :question :answer
+
+  def initialize()
+    @ran1 = rand(1-21)
+    @ran2 = rand(1-21)
+    @problem = "What is #{ran1} + #{ran2}?"
+    @answer = ran1 + ran2
+  end
+
 end
+
+
+
