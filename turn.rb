@@ -1,23 +1,20 @@
+require './question.rb'
+
 class Turn
-  def initialize
+  def initialize()
     @q = Question.new
   end
 
   # generates new instance of question and puts it to player
   def ask?
-    puts @problem
+    puts @q.problem
     # prompts player for response
-    @response = gets.chomp
+    print '> '
+    @response = gets.chomp.to_i
   end
 
   # checks response against question.answer
   def correct?
-    if @response == answer
-      return true
-    else
-      # if incorrect, subtract a life from current_player
-    end
+    return @response == @q.answer
   end
-
-  # current_player = p1 or p2 (depending on game loop?)
 end
